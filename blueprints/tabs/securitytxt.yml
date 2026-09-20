@@ -1,0 +1,204 @@
+# site/plugins/heineref_securitytxt/blueprints/tabs/securitytxt.yml
+label: security.txt
+icon: globe
+
+fields:
+  securityinfo:
+    label:
+      de: Wichtige Information
+      en: Important information
+    type: info
+    theme: positive
+    width: 1/2
+    text:
+      de: |
+        Der Inhalt dieser Felder ist für Website-Besucher NICHT sichtbar und wird ausschließlich von Sicherheitsforschern ausgewertet.
+      en: |
+        The contents of these fields are NOT visible to website visitors and are analyzed exclusively by security researchers.
+  securitytranslationinfo:
+    label:
+      de: Übersetzungsinformation
+      en: Translation Information
+    type: info
+    width: 1/2
+    text:
+      de: |
+        Die nachfolgenden Felder können bei mehrsprachigen Websites nur in der jeweilgen ersten Sprache (der Standardsprache) eingegeben werden.
+      en: |
+        For multilingual websites, the following fields can only be filled in using their default language.
+  securityrfc9116info:
+    label:
+      de: Information gemäß RFC 9116
+      en: Information from RFC 9116
+    type: info
+    theme: negative
+    text:
+      de: |
+        **5.3. Falsche oder veraltete Informationen**
+        Wenn die in einer "security.txt"-Datei genannten Informationen und Ressourcen falsch sind oder nicht auf dem neuesten Stand gehalten werden, kann dies dazu führen, dass Sicherheitsberichte nicht bei der Organisation eingehen oder an falsche Ansprechpartner gesendet werden, wodurch mögliche Sicherheitsprobleme Dritten offengelegt werden. Es kann vorteilhafter sein, gar keine "security.txt"-Datei zu haben, als veraltete Informationen in dieser Datei zu führen. Organisationen müssen das Feld „Expires“ (siehe Abschnitt 2.5.5) verwenden, um Forschern mitzuteilen, wann die Daten in der Datei nicht mehr gültig sind.
+        Organisationen sollten sicherstellen, dass die Informationen in dieser Datei sowie alle referenzierten Ressourcen wie Webseiten, E-Mail-Adressen und Telefonnummern aktuell gehalten werden, zugänglich sind, von der Organisation kontrolliert werden und sicher aufbewahrt werden.
+      en: |
+        **5.3. Incorrect or Stale Information**
+        If information and resources referenced in a "security.txt" file are incorrect or not kept up to date, this can result in security reports not being received by the organization or sent to incorrect contacts, thus exposing possible security issues to third parties. Not having a "security.txt" ﬁle may be preferable to having stale information in this ﬁle. Organizations must use the "Expires" ﬁeld (see Section 2.5.5) to indicate to researchers when the data in the file is no longer valid.
+        Organizations should ensure that information in this file and any referenced resources such as web pages, email addresses, and telephone numbers are kept current, are accessible, are controlled by the organization, and are kept secure.
+  securityshowsecuritytxt:
+    type: radio
+    label:
+      de: Soll die Datei "security.txt" z.B. für Sicherheitsforscher vorhanden sein?
+      en: Should the "security.txt" file be available, for example, for security researchers?
+    translate: false
+    default: yes
+    required: true
+    options:
+      "Yes":
+        de: "Ja"
+        en: "Yes"
+      "No":
+        de: "Nein"
+        en: "No"
+    help:
+      de: |
+        Bei "Ja" kann die Datei "security.txt" mit den nachfolgend eingegebenen Inhalten z.B. von Sicherheitsforscher angezeigt werden.
+        Bei "Nein" gibt es keine Datei "security.txt".
+      en: |
+        If you select "Yes", the "security.txt" file can be viewed—for example, by security researchers—with the content entered below.
+        If you select "No", there is no "security.txt" file available.
+  securityheadline1:
+    label:
+      de: Die Datei "security.txt"
+      en: The file "security.txt"
+    type: headline
+    when:
+      securityshowsecuritytxt: "Yes"
+    help:
+      de: |
+        Nachfolgend werden die Inhalte der Datei "security.txt" festgelegt.
+      en: |
+        The contents of the "security.txt" file are defined below.
+  securitytext:
+    label:
+      de: Security-Basis-Text
+      en: Security Basics Text
+    type: textarea
+    translate: false
+    buttons: false
+    font: monospace
+    placeholder: |
+      # RFC 9116: security.txt
+      # ----------------------
+
+      # Our security address
+      Contact: mailto:bugs@example.com
+      Contact: tel:+49-9999-99999-999
+      Contact: %url%/report-security-vulnerabilities
+      # Preferred-Languages
+      Preferred-Languages: de, en
+      # Our security policy
+      Policy: %url%/security-policy
+      # Our security acknowledgments page
+      Acknowledgments: %url%/hall-of-fame
+    when:
+      securityshowsecuritytxt: "Yes"
+    help:
+      de: |
+        Der vorstehende Text wird durch das "`Expires: `" Datum gemäß der nachfolgenden Felder und den "`Canonical: `" Link zur Datei "`security.txt`" automatisch ergänzt.
+        Außerdem werden im vorstehenden Text alle Vorkommmen von "`%url%`" durch die URL der Website ersetzt. Die ersetzende URL beeinhaltet bei mehrsprachigen Websites NICHT das Sprachkürzel (wie z.B. "`/de`")!
+
+        Geben Sie mit "`Contact: `" ggf. mehrfach in der Reihenfolge ihrer Präferenz an, auf welchem Weg Forscher Sicherheitslücken melden sollen, z. B. über eine E-Mail-Adresse (beginnend mit "`mailto:`"), eine Telefonnummer (beginnend mit "`tel:`") und/oder **besser zur Reduzierung von Missbrauchsmöglichkeiten** eine Webseite (URL zwingend beginnend mit "`https://`") mit den Kontaktdaten der "security contact address" wie "`bugs@example.com`".
+        Dieses Feld **muss mindestens einmal** vorhanden sein.
+
+        Das optionale Feld "`Preferred-Languages: `" kann verwendet werden, um eine Reihe von natürlichen Sprachen anzugeben, die bei der Einreichung von Sicherheitsberichten bevorzugt werden. Diese Reihe kann mehrere Werte (z.B.: "`de, en`") enthalten, die durch Kommas getrennt sind.
+        Fehlt dieses Feld, können Sicherheitsforscher davon ausgehen, dass Englisch die zu verwendende Sprache ist. Die Reihenfolge, in der sie aufgeführt sind, sagt nichts über ihre Priorität aus; die aufgeführten Sprachen sollen gleiche Priorität haben. Wenn dieses Feld enthalten ist, muss mindestens eine Sprache angegeben werden. Dieses Feld darf in einer "`security.txt`"-Datei **nicht mehr als einmal** vorkommen.
+
+        Das optionale Feld "`Policy: `" enthält einen Link (URL zwingend beginnend mit "`https://`") zu der Seite, auf der die Richtlinie zur Offenlegung von Sicherheitslücken zu finden ist. Dies kann Sicherheitsforschern helfen, die Vorgehensweise der Organisation bei der Meldung von Sicherheitslücken besser zu verstehen.
+
+        Das optionale Feld "`Acknowledgments: `" enthält einen Link (URL zwingend beginnend mit "`https://`") zu einer Seite, auf der Sicherheitsforscher für ihre Meldungen gewürdigt werden. Die Seite, auf die verwiesen wird, sollte eine Liste der Sicherheitsforscher enthalten, die Sicherheitslücken gemeldet und an deren Behebung mitgewirkt haben. Sie sollten darauf achten, die Veröffentlichung von Detail-Informationen zu Sicherheitslücken einzuschränken, um zukünftige Angriffe zu verhindern.
+
+      en: |
+        The text above is automatically supplemented with the "`Expires: `" date based on the fields below and the "`Canonical: `" link to the "`security.txt`" file.
+        In addition, all instances of "`%url%`" in the text above are replaced with the website's URL. For multilingual websites, the replacement URL does NOT include the language code (such as "`/en`")!
+
+        Using "`Contact: `" (repeat as needed), specify in order of preference the methods researchers should use to report security vulnerabilities, e.g., via an email address (beginning with "`mailto:`"), a phone number (beginning with "`tel:`"), and/or **preferably, to reduce the potential for abuse**, a website (URL must begin with "`https://`") containing the contact information for the "security contact address," such as "`bugs@example.com`".
+        This field **must appear at least once**.
+
+        The optional "`Preferred-Languages: `" field can be used to specify a list of natural languages preferred for submitting security reports. This list may contain multiple values (e.g., "`de, en`") separated by commas.
+        If this field is missing, security researchers can assume that English is the language to be used. The order in which they are listed does not indicate priority; the listed languages are intended to have equal priority. If this field is included, at least one language must be specified. This field **must not appear more than once** in a "`security.txt`" file.
+
+        The optional "`Policy: `" field contains a link (the URL must begin with "`https://`") to the page where the vulnerability disclosure policy can be found. This can help security researchers better understand the organization's process for reporting vulnerabilities.
+
+        The optional "`Acknowledgments: `" field contains a link (the URL must begin with "`https://`") to a page where security researchers are acknowledged for their reports. The page linked to should include a list of security researchers who have reported vulnerabilities and contributed to their resolution. You should take care to limit the publication of detailed information about vulnerabilities to prevent future attacks.
+  securityoptions:
+    type: radio
+    label:
+      de: Eingabe-Optionen
+      en: Input Options
+    translate: false
+    default: duration
+    options:
+      date:
+        de: Ablaufdatum
+        en: Expiration Date
+      duration:
+        de: Gültigkeitszeitraum
+        en: Validity Period
+    when:
+      securityshowsecuritytxt: "Yes"
+    help:
+      de: |
+        Sie haben zwei Optionen, die Art der Festlegung des Ablaufdatums zu bestimmen:
+          - **Ablaufdatum**:
+            Bei Wahl dieser Option können Sie das Ablaufdatum sekundengenau eingeben. RFC 9116 **empfiehlt**, den Wert des Ablaufdatums auf ein Datum festzulegen, das **weniger als ein Jahr in der Zukunft** liegt, um zu verhindern, dass die Daten veralten.
+            Das eingegebene Ablaufdatum wird dauerhaft unverändert in die Datei "security.txt" übernommen und muss, wie auch der Inhalt des Feldes "Security-Text", durch die Editoren und Admins bei Bedarf aktualisiert werden.
+          - **Gültigkeitszeitraum**:
+            Bei Wahl dieser Option können Sie einen Zeitraum (um RFC 9116 einzuhalten: **max. 1 Jahr**) eingeben, der für das in die Datei "security.txt" übernommen Ablaufdatum automatisch auf das aktuelle Basisdatum (letzter Tag des letzten Monats um 12:00 Uhr UTC) addiert wird. Das Basisdatum für das Ablaufdatum und das Ablaufdatum selbst ändert sich so nur einmal im Monat.
+            Es empfielt sich bei dieser Option, den Text des Feldes "Security-Text" und seine Links so zu gestalten, dass dort keine Links angegeben sind, die in der Zukunft aktualiert werden müssen. So können gemäß RFC 9116 z.B. die Inhalte des Feldes "Contact:" auch auf eine von Kirby verwaltete "https:"-Webseite verweisen!
+      en: |
+        You have two options for specifying the expiration date:
+          - **Expiration Date**:
+            If you select this option, you can enter the expiration date down to the second. RFC 9116 **recommends** setting the expiration date to a date that is **less than one year in the future** to prevent the data from becoming outdated.
+            The entered expiration date is permanently saved unchanged in the “security.txt” file and, like the content of the “Security-Text” field, must be updated by editors and admins as needed.
+          - **Validity Period**:
+            If you select this option, you can enter a period (to comply with RFC 9116: **max. 1 year**) that is automatically added to the base date (the last day of the previous month at 12:00 p.m. UTC) for the expiration date saved to the “security.txt” file. The base date for the expiration date and the expiration date itself thus change only once a month.
+            When using this option, it is recommended that you format the text in the “Security-Text” field and its links so that no links are included that will need to be updated in the future. For example, in accordance with RFC 9116, the contents of the “Contact:” field can also link to an “https:” website managed by Kirby!
+  securityvalidity:
+    label:
+      de: Gültigkeitszeitraum
+      en: Validity period
+    type: text
+    default: 8 months
+    when:
+      securityshowsecuritytxt: "Yes"
+      securityoptions: duration
+    translate: false
+    help:
+      de: |
+        RFC 9116 **empfiehlt**, den Wert dieses Feldes auf einen Zeitraum festzulegen, der **maximal ein Jahr beträgt**, um zu vermeiden, dass die Daten der Datei "security.txt" veraltet sind (so dass Sicherheitsforscher ihm dann nicht mehr vertrauen sollten).
+        Wert z.B.: "8 months 12 days"
+      en: |
+        RFC 9116 **recommends** that the value of this field be **no more than one year** to avoid staleness (so security researchers should then not trust the file "security.txt").
+        Contents e.g.: "8 months 12 days"
+  securityexpires:
+    label:
+      de: Gültig bis
+      en: Expires at
+    type: date
+    when:
+      securityshowsecuritytxt: "Yes"
+      securityoptions: date
+    display: DD.MM.YYYY
+    time:
+      step: second
+      display: HH:mm:ss GMT
+      default: 20:00:00 GMT
+    default: yesterday
+    translate: false
+    help:
+      de: |
+        Das Datum und die Uhrzeit, ab denen der Inhalt der Datei "security.txt" als veraltet gilt (so dass Sicherheitsforscher ihm dann nicht mehr vertrauen sollten).
+        *Achten Sie darauf, diesen Wert regelmäßig zu aktualisieren und Ihre Datei regelmäßig zu überprüfen.*
+        RFC 9116 **empfiehlt**, den Wert dieses Feldes auf ein Datum festzulegen, das **weniger als ein Jahr in der Zukunft** liegt, um zu verhindern, dass die Daten veralten.
+      en: |
+        The date and time when the content of the "security.txt" file should be considered stale (so security researchers should then not trust it).
+        *Make sure you update this value periodically and keep your file under review.*
+        RFC 9116 **recommends** setting the value of this field to a date that is **less than one year in the future** to prevent the data from becoming outdated.
+
