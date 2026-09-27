@@ -2,8 +2,8 @@
   "name": "heineref/kirby-securitytxt",
   "description": "'SecurityTxt' creates a 'security.txt' file in accordance with RFC 9116",
   "type": "kirby-plugin",
-  "version": "0.1",
-  "time": "2026-09-20",
+  "version": "0.2",
+  "time": "2026-09-28",
   "license": "MIT",
   "keywords": [
     "kirby5",
