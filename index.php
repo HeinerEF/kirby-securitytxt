@@ -11,7 +11,8 @@
  * it does not implements a "PGP Signature" yet. The German BSI does not signs it "security.txt" yet (as of 2026-09-04).
  *
  * @author        HeinerEF
- * @last updated  2026-09-19 by HeinerEF
+ * @last updated  2026-09-25 by HeinerEF
+ * @updated       2026-09-19 by HeinerEF
  * @updated       2026-09-11 by HeinerEF
  * @updated       2026-09-06 by HeinerEF
  * @updated       2026-08-30 by HeinerEF
@@ -37,10 +38,10 @@ Kirby::plugin('heineref/securitytxt', [
           if (site()->securityoptions() == 'date'):
             $expiresDate = site()->securityexpires()->toDate('Y-m-d\TH:i:s\Z');
           else:
-            $expiresDate = new Date('last day of last month 12:00'); // the expiration base date changes only once a month
+            $expiresDate = new Date('last day of last month 12:00'); // this base date for the expiration date changes only once a month
             $interval = DateInterval::createFromDateString(site()->securityvalidity());
             $expiresDate->add($interval);
-            $expiresDate = str_replace(' ', 'T', substr($expiresDate->toString('datetime'), 0, 19)) . 'Z'; // 'Z' (= 'GMT'), not 'z' according to the RFC errata dated 2022-12-10 to Section 2.5.5 !
+            $expiresDate = str_replace(' ', 'T', substr($expiresDate->toString('datetime'), 0, 19)) . 'Z'; // 'Z' (= 'UTC' = 'GMT'), not 'z' according to the RFC errata dated 2022-12-10 to Section 2.5.5 !
           endif;
           $canonicalUrl = kirby()->url() . '/.well-known/security.txt'; // this URL does NOT include the language code (such as "/en/")!
           $securitytxt = Str::ascii( str_replace('%url%', kirby()->url(), site()->securitytext()) );
