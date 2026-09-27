@@ -5,16 +5,30 @@ icon: globe
 fields:
   securityinfo:
     label:
-      de: Wichtige Information
-      en: Important information
+      de: Übergeordnete Information
+      en: General information
     type: info
     theme: positive
+    text:
+      de: |
+        Am 06.08.2026 hat *heise.de* im Artikel (link: https://heise.de/-11402270 text: Fehlende Kontaktmöglichkeit: Deutschland verschläft Sicherheit per security.txt target: heisede class: externerlink) auf eine Meldung des **Bundesamts für Sicherheit in der Informationstechnik** (**BSI**) aufmerksam gemacht, dass zu viele Webseiten auf die etablierte Kontaktmöglichkeit für Cybersicherheitsvorfälle gemäß (link: https://www.rfc-editor.org/info/rfc9116/ text: **RFC 9116** target: rfceditor9116 class: externerlink) verzichten.
+
+        Dieses Eingabeseite ermöglicht es auf "*Kirby-Art*", die Anforderungen des **RFC 9116** umzusetzen.
+      en: |
+        On August 6, 2026, *heise.de* published an article (link: https://heise.de/-11402351 text: Missing contact option: Germany is sleeping on security via security.txt target: heisede class: externerlink), drew attention to a report from the German **Federal Office for Information Security** (**BSI**) stating that too many websites are failing to use the established contact method for cybersecurity incidents as specified in (link: https://www.rfc-editor.org/info/rfc9116/ text: **RFC 9116** target: rfceditor9116 class: externerlink).
+
+        This Panel page makes it possible to implement the requirements of **RFC 9116** in the “*Kirby style*”.
+  securityinfo2securityresearchers:
+    label:
+      de: Anmerkung
+      en: Please note
+    type: info
     width: 1/2
     text:
       de: |
-        Der Inhalt dieser Felder ist für Website-Besucher NICHT sichtbar und wird ausschließlich von Sicherheitsforschern ausgewertet.
+        Der Inhalt dieser Felder ist für Website-Besucher NICHT sichtbar und soll ausschließlich von Sicherheitsforschern ausgewertet werden.
       en: |
-        The contents of these fields are NOT visible to website visitors and are analyzed exclusively by security researchers.
+        The content of these fields is NOT visible to website visitors and is intended solely for analysis by security researchers.
   securitytranslationinfo:
     label:
       de: Übersetzungsinformation
@@ -172,10 +186,10 @@ fields:
     translate: false
     help:
       de: |
-        RFC 9116 **empfiehlt**, den Wert dieses Feldes auf einen Zeitraum festzulegen, der **maximal ein Jahr beträgt**, um zu vermeiden, dass die Daten der Datei "security.txt" veraltet sind (so dass Sicherheitsforscher ihm dann nicht mehr vertrauen sollten).
+        RFC 9116 **empfiehlt**, den Wert dieses Feldes auf einen Zeitraum festzulegen, der **maximal ein Jahr beträgt**, um zu vermeiden, dass die Daten der Datei "security.txt" veraltet sind (so dass Sicherheitsforscher ihr dann nicht mehr vertrauen sollten).
         Wert z.B.: "8 months 12 days"
       en: |
-        RFC 9116 **recommends** that the value of this field be **no more than one year** to avoid staleness (so security researchers should then not trust the file "security.txt").
+        RFC 9116 **recommends** that the value of this field be **not more than one year** to avoid staleness (so security researchers should then not trust the file "security.txt").
         Contents e.g.: "8 months 12 days"
   securityexpires:
     label:
@@ -201,4 +215,14 @@ fields:
         The date and time when the content of the "security.txt" file should be considered stale (so security researchers should then not trust it).
         *Make sure you update this value periodically and keep your file under review.*
         RFC 9116 **recommends** setting the value of this field to a date that is **less than one year in the future** to prevent the data from becoming outdated.
-
+  securityresult:
+    label:
+      de: Ergebnis
+      en: Result
+    type: info
+    theme: notice
+    text:
+      de: |
+        Wenn alle Änderungen/Eingaben auf dieser Panel-Seite gespeichert sind, kann die aktuelle Datei "(link: .well-known/security.txt text: **security.txt** target: securitytxt)" zur Kontrolle/Prüfung aufgerufen werden.
+      en: |
+        Once all changes and entries on this panel page have been saved, you can access the current file "(link: .well-known/security.txt text: **security.txt** target: securitytxt)" to review or verify it.
