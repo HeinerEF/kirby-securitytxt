@@ -1,4 +1,4 @@
-# Kirby Plugin: security.txt
+# Kirby Plugin: SecurityTxt
 
 ![the SecurityTxt plugin](docs/kirby-securitytxt.png "security.txt in accordance with RFC 9116")
 
@@ -22,7 +22,7 @@ This file `README.md` therefore receives the path `site/plugins/heineref_securit
 ### Composer
 
 ```html
-composer require heineref/kirby-securitytxt
+composer require HeinerEF/kirby-securitytxt
 ```
 
 ### Git submodule

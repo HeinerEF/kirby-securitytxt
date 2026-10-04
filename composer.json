@@ -2,8 +2,8 @@
   "name": "heineref/kirby-securitytxt",
   "description": "'SecurityTxt' creates a 'security.txt' file in accordance with RFC 9116",
   "type": "kirby-plugin",
-  "version": "0.2",
-  "time": "2026-09-28",
+  "version": "1.0.0",
+  "time": "2026-10-04",
   "license": "MIT",
   "keywords": [
     "kirby5",
@@ -11,25 +11,29 @@
     "kirby3",
     "kirby-cms",
     "kirby-plugin",
-    "RFC9116",
-    "HeinerEF",
-    "SecurityTxt"
+    "rfc9116",
+    "SecurityTxt",
+    "HeinerEF"
   ],
   "authors": [
     {
       "name":     "HeinerEF",
+      "email":    "plugins@heineref.de",
       "homepage": "https://github.com/HeinerEF",
       "role":     "Developer"
     }
   ],
   "support": {
-    "docs":    "https://github.com/HeinerEF/kirby-securitytxt/blob/main/README.md",
-    "source":  "https://github.com/HeinerEF/kirby-securitytxt/"
+    "docs":   "https://github.com/HeinerEF/kirby-securitytxt/blob/main/README.md",
+    "source": "https://github.com/HeinerEF/kirby-securitytxt/"
   },
   "require": {
     "getkirby/composer-installer": "^1.2"
   },
   "extra": {
-    "installer-name": "heineref_securitytxt"
+    "installer-name": "heineref_securitytxt",
+    "kirby": {
+      "compatible": "^3.0 || ^4.0 || ^5.0"
+    }
   }
 }
