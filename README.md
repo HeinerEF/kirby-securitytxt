@@ -73,19 +73,19 @@ On the input page of the panel dashboard (home page), after successfully setting
 
 For example, you can enter the following in the "**Security Base Text**" field:
 
->      # RFC 9116: security.txt
->      # ----------------------
+>     # RFC 9116: security.txt
+>     # ----------------------
 >
->      # Our security address
->      Contact: mailto:bugs@example.com
->      Contact: tel:+49-9999-99999-999
->      Contact: %url%/report-security-vulnerabilities
->      # Preferred-Languages
->      Preferred-Languages: de, en
->      # Our security policy
->      Policy: %url%/security-policy
->      # Our security acknowledgments page
->      Acknowledgments: %url%/hall-of-fame
+>     # Our security address
+>     Contact: mailto:bugs@example.com
+>     Contact: tel:+49-9999-99999-999
+>     Contact: %url%/report-security-vulnerabilities
+>     # Preferred-Languages
+>     Preferred-Languages: de, en
+>     # Our security policy
+>     Policy: %url%/security-policy
+>     # Our security acknowledgments page
+>     Acknowledgments: %url%/hall-of-fame
 
 The text you enter is automatically supplemented with the "`Expires: `" date based on the other input fields and the "`Canonical: `" link to the "`security.txt`" file.
 In addition, all instances of "`%url%`" in the text above are replaced with the website’s URL (a URL beginning with "`https://`" or "`http://`". The latter format is not permitted according to RFC 9116 but may occur on development servers). For multilingual websites, the replaced URL does NOT include the language code (such as "`/en`"); if needed, you must enter such a code in the text field! This replacement is useful for testing this plugin on development and staging servers.
