@@ -1,13 +1,13 @@
 # Kirby Plugin: SecurityTxt
 
-![the SecurityTxt plugin](docs/screenshot_security-panel.png "security.txt in accordance with RFC 9116")
-
 On August 6, 2026, *heise.de* published an article [Missing contact option: Germany is sleeping on security via security.txt](https://heise.de/-11402351), drew attention to a report from the German Federal Office for Information Security (**BSI**) stating that too many websites are failing to use the established contact method for cybersecurity incidents as specified in **[RFC 9116](https://www.rfc-editor.org/info/rfc9116/)**.
 
 This “**SecurityTxt**” plugin makes it possible to implement the requirements of **RFC 9116** in the “*Kirby style*”. It does not *yet* support "PGP signatures"; even the German BSI does not sign its "`security.txt`" file (as of September 4, 2026).
 
 The plugin also includes a "`securitytxt.yml`" blueprint, which provides the necessary input fields on the panel's dashboard (home page). It also provides important guidance and strategies regarding website operators’ legitimate concerns about data protection, particularly concerning critical email addresses.
 Details on how to set up these input fields are described in the "**Setup**" section.
+
+![the SecurityTxt plugin](docs/screenshot_security-panel.png "security.txt in accordance with RFC 9116")
 
 
 ## Installation
