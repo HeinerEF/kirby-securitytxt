@@ -1,6 +1,6 @@
 # Kirby Plugin: SecurityTxt
 
-![the SecurityTxt plugin](docs/kirby-securitytxt.png "security.txt in accordance with RFC 9116")
+![the SecurityTxt plugin](docs/screenshot_security-panel.png "security.txt in accordance with RFC 9116")
 
 On August 6, 2026, *heise.de* published an article [Missing contact option: Germany is sleeping on security via security.txt](https://heise.de/-11402351), drew attention to a report from the German Federal Office for Information Security (**BSI**) stating that too many websites are failing to use the established contact method for cybersecurity incidents as specified in **[RFC 9116](https://www.rfc-editor.org/info/rfc9116/)**.
 
